@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/lista-tarefas.css">
+    <title>ToDo</title>
+</head>
+
+<body onload="buscaTodosApiNova()">
+    <header>
+        <nav aria-label="ToDo List">
+            <ul>
+                <li>
+                    <a href="index.html">Lista de tarefas</a>
+                </li>
+            </ul>
+        </nav>
+        <nav aria-label="Busca Api">
+            <ul>
+                <li>
+                    <a href="api.html">Buscar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <form class="nova-tarefa">
+        <button id="button">
+            <img src="./assets/search.png" alt="Busca">
+        </button>
+        Buscar tarefas
+    </form>
+
+    <h2 class="titulo-tarefas">Tarefas concluídas</h2>
+    <ul class="tarefas-concluidas"></ul>
+
+    <h2 class="titulo-tarefas">Tarefas pendentes</h2>
+    <ul class="tarefas-pendentes"></ul>
+
+    <script src="js/busca-api.js"></script>
+</body>
+
+</html>

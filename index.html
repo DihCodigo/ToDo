@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/lista-tarefas.css">
+    <title>ToDo</title>
+
+    <!-- Importando via CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <script>
+        if (!localStorage.getItem('logado')) {
+            window.location.href = "login.html";
+        }
+        function obterNomeDoEmail(email) {
+            if (email) {
+                return email.split('@')[0];
+            }
+            return 'Usuário';
+        }
+
+        window.onload = function () {
+            const email = localStorage.getItem('emailUsuario'); 
+            if (email) { 
+                const nomeUsuario = obterNomeDoEmail(email);
+                document.getElementById('nome-usuario').textContent = nomeUsuario;
+                
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav aria-label="ToDo List">
+            <ul>
+                <li>
+                    <a href="#">Lista de tarefas</a>
+                </li>
+            </ul>
+        </nav><!--
+        <nav aria-label="Busca Api">
+            <ul>
+                <li>
+                    <a href="api.html">Buscar</a>
+                </li>
+            </ul>
+        </nav>-->
+        <div class="bem-vindo">
+            <!--<p>Bem-vindo, <span id="nome-usuario">Logado</span>!</p>-->
+        </div>
+    </header>
+    
+    <form class="nova-tarefa">
+        <input id="nova-tarefa" type="text" placeholder="Nova tarefa">
+        <label for="empresa">Cliente:</label>
+        <select id="empresa">
+            <option value="R7">R7</option>
+            <option value="Canal Rural">Canal Rural</option>
+            <option value="SindicoNet">SindicoNet</option>
+        </select>
+        <label for="prazo" id="titulo-prazo">Prazo da tarefa:</label>
+        <input id="prazo" type="time">
+        <button id="adicionar-tarefa">
+            <img src="./assets/plus.png" alt="Adicionar Tarefa">
+        </button>
+        <button id="adicionar-tarefa-sweet-alert">
+            <img src="./assets/swal2.png" alt="Adicionar Tarefa Sweet Alert">
+        </button>
+    </form>
+
+    <h2 class="titulo-tarefas color-hex">Tarefas pendentes</h2>
+    <ul class="tarefas-pendentes"></ul>
+
+    <h2 class="titulo-tarefas color-hex">Tarefas concluídas</h2>
+    <ul class="tarefas-concluidas el relative-values"></ul>
+
+    <h2 class="titulo-tarefas color-hex">Tarefas em Alerta</h2>
+    <div id="notificacoes" class="notificacoes-container"></div>
+
+    <script src="js/lista-tarefas.js"></script>
+</body>
+
+</html>
